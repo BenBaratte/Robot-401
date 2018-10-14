@@ -187,7 +187,7 @@ void tourne()
 		HAL_Delay(500);
 		BSP_MotorControl_SetMaxSpeed(1,50);
 		BSP_MotorControl_SetMaxSpeed(0,70);
-		HAL_Delay(1000);
+		HAL_Delay(500);
 		BSP_MotorControl_SetMaxSpeed(1,70);
 		BSP_MotorControl_SetMaxSpeed(0,50);
 		HAL_Delay(500);
@@ -296,10 +296,12 @@ int main(void)
 		    else
 		    	dir = FORWARD;
 	        printf("Setting motor %s at %lu ratio\n", (dir == FORWARD ? "Forward" : "Backward"), gStep*Step_size);
-	        avance();
+	        //avance();
 	        tourne();
 
-	        recul();
+	        //recul();
+	        BSP_MotorControl_CmdHardHiZ(0);
+	        BSP_MotorControl_CmdHardHiZ(1);
 			printf("stop\n");
 
 	  }
